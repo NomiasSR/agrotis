@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <!-- data -->
+</html>
+<body>
+	Customer
+	<p th:text="${nome}">Subject</p>
+	<table th:each="dado: ${dados}">
+		<tr>
+  		<td th:text="${dado.nome}" />
+  	</tr>
+  </table>
+  
+  
+</body>
+</html>
