@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agrotis - Sistemas para o Agronegócio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="/css/estilos.css">
+<script src="/js/generics.js"></script>
+</head>
+
+<body style="background: #E5E5E5;">
+
+<!-- snackbar para exibicao de mensagens de erro, sucesso etc -->
+<div id="snackbar">
+	<div style="float: left; width: 20%">
+		<i class="bi bi-exclamation-triangle"></i>
+	</div>
+	<div id="mensagemSnack" style="font-size: 13px; padding-top: 5px;"></div>
+</div>
+
+<div class="barra_topo">
+	<img src="/img/logo_agrotis.png" />
+	<label class="label_barra_topo">AGROTIS</label>
+</div>
+
+<div style="padding: 40px;">
+<div style="background-color: white; ">
+	<div class="barra_aplicacao">
+	  <div class="titulo_barra_aplicacao">
+	  	<div>
+	  		Teste front-end - Edição de Registro
+	  	</div>
+  		<div class="bloco_salvardados">	
+				<div id="btnSalvarDados" style="cursor: pointer">
+	  			Salvar
+	  		</div>
+	  		<div id="btnCancelar" style="cursor: pointer;">
+	  			Cancelar
+	  		</div>
+	  	</div>
+	  </div>
+	<div>
+</div>
+</div>
+		
+<div style="margin-top:30px; padding-left: 30px; padding-right: 20px;">
+	<form class="needs-validation" novalidate>
+	  <div class="row">
+	    <div class="col-6 form-floating">
+	  		<input type="text" class="form-control contador" id="nome" name="nome" 
+	  			placeholder="Nome" maxlength="40" required>
+	  		<label for="nome">Nome *</label>
+	  		<div class="invalid-feedback">
+  				<i class="bi bi-exclamation-triangle"></i>
+  				Error
+  			</div>
+  			<div style="text-align: right">
+  				<small class="contador_nome">0/40</small>
+  			</div>	    			
+	  	</div>
+	    
+	    <div class="col-3">
+	    	<div class="form-floating input-group mb-4">
+	    		<input type="text" class="datepicker form-control" id="dataInicial" 
+	    			placeholder="Data Inicial" name="dataInicial" required>
+	    		<label for="datepicker2">Data Inicial *</label>
+	    		<span class="input-group-append" style="margin-left: -20px; margin-top: 30px;">
+        		<i class="fa fa-calendar"></i>
+        	</span>
+		  		<div class="invalid-feedback">
+		  			<i class="bi bi-exclamation-triangle"></i>
+  					Error
+  				</div>			    		
+	    	</div>
+			</div>
+    
+			<div class="col-3">
+	    	<div class="form-floating input-group mb-4">
+	    		<input type="text" class="datepicker form-control" id="dataFinal" 
+	    			placeholder="Data Final" name="dataFinal" required>
+	    		<label for="datepicker2">Data Final *</label>
+	    		<span class="input-group-append" style="margin-left: -20px; margin-top: 30px;">
+        		<i class="fa fa-calendar"></i>
+        	</span>
+		  		<div class="invalid-feedback">
+		  			<i class="bi bi-exclamation-triangle"></i>
+  					Error
+  				</div>			    		
+	    	</div>
+			</div>	  			
+		</div>	
+		
+		<div class="row">
+			<div class="col-6 floating-label">  
+	      <select class="floating-select" onclick="this.setAttribute('value', this.value);" value="" 
+	       id="propriedades" name="propriedades" required></select>
+	      <label class="label1">Propriedades *</label>
+	      <div class="invalid-feedback">
+  				<i class="bi bi-exclamation-triangle"></i>
+  				Error
+  			</div>
+  			<div id="divCNPJ"></div>
+			</div>
+			
+			<div class="col-6 floating-label">  
+	      <select class="floating-select" onclick="this.setAttribute('value', this.value);" value="" 
+	       id="laboratorios" name="laboratorios" required></select>
+	      <label class="label1">Laboratórios *</label>
+	      <div class="invalid-feedback">
+  				<i class="bi bi-exclamation-triangle"></i>
+  				Error
+  			</div>	
+			</div>
+		</div>
+		
+		 <div class="row">
+	    <div class="form-floating">
+	  		<textarea class="form-control contador" id="observacoes" name="observacoes" 
+	  			placeholder="Observações" maxlength="1000" rows="50" style="height:150px"></textarea>
+	  		<label for="observacoes" style="margin-left: 5px; font-weight: 500">Observações</label>
+  			<div style="text-align: right">
+  				<small class="contador_observacoes">0/1000</small>
+  			</div>	    			
+	  	</div>
+	  </div>
+	</form>
+</div>
+
+<script type="text/javascript">
+//variaveis globais
+var propriedades, dadosPropriedades, divCNPJ, laboratorios, btnSalvarDados;
+			  				
+function loadDadosEdicao() { }
+
+//metodo para salvar Dados
+function salvarDados() 
+{
+	//validando os campos obrigatorios do form
+	var erro = false;
+	var forms = document.querySelectorAll('.needs-validation');
+	Array.prototype.slice.call(forms).forEach(function (form) {
+		if (!form.checkValidity()) { 
+			snackBar("Preencha os campos obrigatórios", "red");
+			erro = true;
+		}		
+		form.classList.add('was-validated')     
+	}, false)
+	
+	//salvando dados
+	if (!erro) 
+	{
+		//montando dados de envio
+		const url = "http://localhost:8080/teste-agrotis/";
+		const campos = {
+			nome: document.getElementById("nome").value,
+			dataInicial: formatarData(document.getElementById("dataInicial").value),
+			dataFinal: formatarData(document.getElementById("dataFinal").value),
+			propriedadeId: parseInt(document.getElementById("propriedades").value),
+	    laboratorioId: parseInt(document.getElementById("laboratorios").value),
+	    observacoes: document.getElementById("observacoes").value,
+		}
+
+		//salvando dados
+		fetch(url, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(campos)
+	  })
+		.catch(err => alert("Erro ao salvar dados"))
+		.then(response => response.json())
+		.then(dados => {
+			if (dados['status'] == 200)
+				snackBar("Dados salvos com sucesso", "green");
+			else {
+				var temp = dados['trace'];
+				var mensagemTemp = "Erro ao salvar os dados.<br>Verifique sua conexão, dados informados e tente novamente.";
+				if (temp.toLowerCase().includes("duplicate entry"))
+					mensagemTemp = "Erro ao salvar os dados.<br>Os dados informados já existem cadastrados.<br>Por favor tente novamente.";
+				
+				snackBar(mensagemTemp, "red");
+			}
+		})
+	}
+}
+</script>
+</body>
+</html>
