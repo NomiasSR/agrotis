@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.agrotis.model.Customer;
 import br.com.agrotis.model.CustomerService;
+import br.com.agrotis.model.TesteAgrotis;
 
 @RestController
 @RequestMapping("/customers")
@@ -32,7 +33,7 @@ public class CustomerController {
     }
 
     @GetMapping
-    public Page<Customer> getAll() {
+    public Page<TesteAgrotis> getAll() {
         return service.findAll();
     }
    

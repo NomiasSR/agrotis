@@ -18,11 +18,10 @@ import br.com.agrotis.model.CustomerService;
 @Service
 public class BookService {
 	 @Autowired
-   CustomerService service;
+    private CustomerRepository repository;
 	 
-	 final List<Customer> books = null;
-
-    public Page<Customer> findPaginated(Pageable pageable) {    		
+    public Page<Customer> findPaginated(Pageable pageable) {
+    	final List<Customer> books = repository.findAll();
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
         int startItem = currentPage * pageSize;

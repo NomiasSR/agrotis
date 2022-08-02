@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import br.com.agrotis.model.Customer;
 import br.com.agrotis.model.CustomerRepository;
 import br.com.agrotis.model.CustomerService;
+import br.com.agrotis.model.TesteAgrotis;
 
 
 @Controller
@@ -58,11 +59,10 @@ public class RotasController {
     @RequestParam("size") Optional<Integer> size) {
       int currentPage = page.orElse(1);
       int pageSize = size.orElse(5);
-      Page<Customer> bookPage = service.findPaginated(PageRequest.of(currentPage - 1, pageSize));
-      
-      System.out.println(bookPage);
-      
+      Page<TesteAgrotis> bookPage = service.findPaginated(PageRequest.of(currentPage - 1, pageSize));
       model.addAttribute("bookPage", bookPage);
+      
+      System.out.println(bookPage.getTotalPages());
 
       int totalPages = bookPage.getTotalPages();
       if (totalPages > 0) {

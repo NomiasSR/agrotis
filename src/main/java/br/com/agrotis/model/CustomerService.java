@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -17,14 +18,14 @@ public class CustomerService {
     @Autowired
     CustomerRepository repository;
     
+    //public List<TesteAgrotis> books = repository.findAll();    
 
     public Page<Customer> search(String searchTerm, int page, int size) {
     	PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "nome");
     	return repository.search(searchTerm.toLowerCase(), pageRequest);
     }
     
-
-    public Page<Customer> findAll() {
+    public Page<TesteAgrotis> findAll() {
       int page = 0;
       int size = 10;
       PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "nome");
@@ -32,12 +33,12 @@ public class CustomerService {
     }
     
     
-    public Page<Customer> findPaginated(Pageable pageable) {
-    	List<Customer> books = repository.findAll();
+    public Page<TesteAgrotis> findPaginated(Pageable pageable) {
+    List<TesteAgrotis> books = repository.findAll();
       int pageSize = pageable.getPageSize();
       int currentPage = pageable.getPageNumber();
       int startItem = currentPage * pageSize;
-      List<Customer> list;
+      List<TesteAgrotis> list;
 
       if (books.size() < startItem) {
       	list = Collections.emptyList();
@@ -45,7 +46,7 @@ public class CustomerService {
         int toIndex = Math.min(startItem + pageSize, books.size());
         list = books.subList(startItem, toIndex);
       }
-      Page<Customer> bookPage = new PageImpl<Customer>(list, PageRequest.of(currentPage, pageSize), books.size());
+      Page<TesteAgrotis> bookPage = new PageImpl<TesteAgrotis>(list, PageRequest.of(currentPage, pageSize), books.size());
       return bookPage;
     }
 
