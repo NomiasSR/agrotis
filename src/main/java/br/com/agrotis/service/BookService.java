@@ -14,18 +14,19 @@ import br.com.agrotis.model.Book;
 import br.com.agrotis.model.Customer;
 import br.com.agrotis.model.CustomerRepository;
 import br.com.agrotis.model.CustomerService;
+import br.com.agrotis.model.TesteAgrotis;
 
 @Service
 public class BookService {
 	 @Autowired
     private CustomerRepository repository;
 	 
-    public Page<Customer> findPaginated(Pageable pageable) {
-    	final List<Customer> books = repository.findAll();
+    public Page<TesteAgrotis> findPaginated(Pageable pageable) {
+    	final List<TesteAgrotis> books = repository.findAll();
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
         int startItem = currentPage * pageSize;
-        List<Customer> list;
+        List<TesteAgrotis> list;
 
         if (books.size() < startItem) {
             list = Collections.emptyList();
@@ -34,7 +35,7 @@ public class BookService {
             list = books.subList(startItem, toIndex);
         }
 
-        Page<Customer> bookPage = new PageImpl<Customer>(list, PageRequest.of(currentPage, pageSize), books.size());
+        Page<TesteAgrotis> bookPage = new PageImpl<TesteAgrotis>(list, PageRequest.of(currentPage, pageSize), books.size());
 
         return bookPage;
     }

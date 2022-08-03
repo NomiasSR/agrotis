@@ -3,7 +3,6 @@ package br.com.agrotis.controller;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
-import br.com.agrotis.model.Propriedades;
 import br.com.agrotis.model.TesteAgrotis;
 import br.com.agrotis.model.TesteAgrotisRepository;
 
@@ -66,12 +63,14 @@ public class TesteAgrotisController {
 	public @ResponseBody Iterable<TesteAgrotis> list() {
 		return testeAgrotisRepository.findAll();
 	}
+	
   
 	//listagem de registro para edicao
 	@GetMapping(path="/{id}")
 	public @ResponseBody Optional<TesteAgrotis> edicao(@PathVariable("id") int id) {
 		return testeAgrotisRepository.findById(id);
 	}  
+	
   
 	//exclusao de registro
 	@DeleteMapping(path="/{id}")
@@ -88,9 +87,10 @@ public class TesteAgrotisController {
 		}		
 		return "{\"mensagem\": \""+retorno+"\", \"status\": 200 }";
 	}  
+	
   
-  //atualizacao de registro
-  @PutMapping(path="/")
+	//atualizacao de registro
+	@PutMapping(path="/")
 	public @ResponseBody String update(@RequestBody Map<String, Object> payload) {
 		try
 		{
@@ -111,5 +111,6 @@ public class TesteAgrotisController {
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage(), ex);
 		}		
 		return "{\"mensagem\": \"registro atualizado com sucesso\", \"status\": 200 }";
-  }
+	}
 }
+

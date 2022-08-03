@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.agrotis.model.Customer;
 import br.com.agrotis.model.CustomerService;
+import br.com.agrotis.model.TesteAgrotis;
 import br.com.agrotis.service.BookService;
 
 @Controller
@@ -32,7 +33,7 @@ public class BookController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(5);
 
-        Page<Customer> bookPage = bookService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
+        Page<TesteAgrotis> bookPage = bookService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
 
         model.addAttribute("bookPage", bookPage);
 
