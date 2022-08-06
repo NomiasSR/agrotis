@@ -6,18 +6,18 @@
         </tr>
 	</thead>
     <tbody>
-    	<tr th:each="dado, iStat : ${dados.content}"
+    	<tr th:each="book, iStat : ${bookPage.content}"
         	th:style="${iStat.odd}? 'font-weight: bold;'"
             th:alt-title="${iStat.even}? 'even' : 'odd'">
-            <td th:text="${dado.id}" />
-            <td th:text="${dado.nome}" />
+            <td th:text="${book.id}" />
+            <td th:text="${book.nome}" />
         </tr>
     </tbody>
 </table>
 
-<div th:if="${dados.totalPages > 0}" class="pagination"
+<div th:if="${bookPage.totalPages > 0}" class="pagination"
     th:each="pageNumber : ${pageNumbers}">
-    <a th:href="@{/teste-agrotis/list(size=${dados.size}, page=${pageNumber})}"
+    <a th:href="@{/books(size=${bookPage.size}, page=${pageNumber})}"
         th:text=${pageNumber}
-        th:class="${pageNumber==dados.number + 1} ? active"></a>
+        th:class="${pageNumber==bookPage.number + 1} ? active"></a>
 </div>
